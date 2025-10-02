@@ -1,6 +1,7 @@
 FROM jlesage/baseimage-gui:debian-12-v4.9.0
 
 ENV APP_NAME="Baidunetdisk" \
+DEBIAN_FRONTEND=noninteractive \
 HOME=/config \
 TZ=Asia/Shanghai \
 LC_ALL=C \
@@ -17,8 +18,7 @@ RUN set -ex \
 && sed -i 's@deb.debian.org@mirrors.tuna.tsinghua.edu.cn@g' /etc/apt/sources.list.d/debian.sources \
 && sed -i 's@security.debian.org@mirrors.tuna.tsinghua.edu.cn/debian-security@g' /etc/apt/sources.list.d/debian.sources \
 && apt-get update \
-&& apt-get install -y curl jq \
-xdg-utils procps pciutils desktop-file-utils libgtk-3-0 \
+&& apt-get install -y curl jq procps xdg-utils pciutils desktop-file-utils libgtk-3-0 \
 libnss3 libxss1 libasound2 libgbm1 \
 libnotify4 libsecret-1-0 libsecret-common \
 libdbusmenu-glib4 libdbusmenu-gtk3-4 \
